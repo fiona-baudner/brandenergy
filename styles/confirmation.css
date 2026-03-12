@@ -1,0 +1,564 @@
+/* Confirmation Page Specific Styles */
+
+.confirmation-screen-page {
+    display: flex;
+    flex-direction: column;
+    height: 812px;
+    max-height: 90vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 54px;
+    left: 16px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    text-decoration: none;
+}
+
+/* Scrollable Content */
+.confirmation-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 120px;
+    scroll-behavior: smooth;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 16px 24px;
+    min-height: 300px;
+    overflow: hidden;
+    animation: heroCollapse 1.6s ease-out forwards 5.2s;
+}
+
+@keyframes heroCollapse {
+    0% {
+        min-height: 300px;
+        padding: 20px 16px 24px;
+    }
+    100% {
+        min-height: 0;
+        max-height: 0;
+        padding: 0;
+        margin: 0;
+    }
+}
+
+/* Animation Container */
+.animation-container {
+    position: relative;
+    width: 200px;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+/* Product Image - appears first, then gets sucked into box */
+.animation-container .product-image {
+    position: absolute;
+    width: 140px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+    top: 20px;
+    opacity: 0;
+    transform: scale(0.5);
+    animation: productAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 0.2s,
+               productSuckIn 0.8s ease-in forwards 2.5s;
+}
+
+/* Box - pops up from bottom, shakes, then fades out */
+.box-image {
+    position: absolute;
+    width: 180px;
+    height: auto;
+    bottom: 0;
+    z-index: 3;
+    opacity: 0;
+    transform: translateY(150px);
+    animation: boxPopUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 1.5s,
+               boxShake 0.5s ease-in-out forwards 3.2s,
+               boxFadeOut 0.5s ease-out forwards 4s;
+}
+
+/* Parachute - fades in where box was, then flies out top */
+.parachute-image {
+    position: absolute;
+    width: 160px;
+    height: auto;
+    bottom: 20px;
+    z-index: 4;
+    opacity: 0;
+    transform: translateY(0);
+    animation: parachuteFadeIn 0.5s ease-out forwards 4s,
+               parachuteFlyOut 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards 4.8s;
+}
+
+/* Animation: Product appears */
+@keyframes productAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(-30px);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1.08) translateY(5px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Animation: Product gets sucked into box */
+@keyframes productSuckIn {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    15% {
+        transform: translateY(-10px) scale(1.05);
+        opacity: 1;
+    }
+    40% {
+        transform: translateY(40px) scale(0.8);
+        opacity: 1;
+    }
+    70% {
+        transform: translateY(80px) scale(0.4);
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(120px) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Animation: Box pops up from bottom */
+@keyframes boxPopUp {
+    0% {
+        opacity: 0;
+        transform: translateY(150px) scale(0.7);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1.08);
+    }
+    70% {
+        transform: translateY(8px) scale(0.96);
+    }
+    85% {
+        transform: translateY(-4px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Animation: Box shakes when product goes in */
+@keyframes boxShake {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+    }
+    15% {
+        transform: translateY(-10px) rotate(-4deg);
+    }
+    30% {
+        transform: translateY(0) rotate(4deg);
+    }
+    45% {
+        transform: translateY(-6px) rotate(-3deg);
+    }
+    60% {
+        transform: translateY(0) rotate(2deg);
+    }
+    75% {
+        transform: translateY(-3px) rotate(-1deg);
+    }
+}
+
+/* Animation: Box fades out */
+@keyframes boxFadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(0) scale(0.8);
+    }
+}
+
+/* Animation: Parachute fades in */
+@keyframes parachuteFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Animation: Parachute flies out the top */
+@keyframes parachuteFlyOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(10px) scale(1.05);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-600px) scale(0.6) rotate(-10deg);
+    }
+}
+
+/* Balloons Positioning - Extra Big */
+.balloon {
+    position: absolute;
+    pointer-events: none;
+}
+
+.red-balloon-1 {
+    width: 180px;
+    height: auto;
+    top: 10px;
+    left: -50px;
+    transform: rotate(-15deg);
+}
+
+.red-balloon-2 {
+    width: 160px;
+    height: auto;
+    top: 150px;
+    left: -60px;
+    transform: rotate(10deg);
+}
+
+.depop-balloon {
+    width: 170px;
+    height: auto;
+    top: 200px;
+    left: -10px;
+}
+
+.star-balloon {
+    width: 160px;
+    height: auto;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.red-balloon-3 {
+    width: 190px;
+    height: auto;
+    top: 50px;
+    right: -60px;
+    transform: rotate(15deg);
+}
+
+/* Success Message */
+.success-message {
+    text-align: center;
+    padding: 16px 16px 24px;
+}
+
+.success-message h1 {
+    font-family: 'Aktiv Grotesk Extended', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #262626;
+    line-height: 1.3;
+    margin-bottom: 8px;
+}
+
+.success-message p {
+    font-family: 'Aktiv Grotesk Extended', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #262626;
+}
+
+/* Section Divider */
+.section-divider {
+    height: 1px;
+    background: #e3e3e3;
+    margin: 0 16px;
+}
+
+/* Order Details */
+.order-details {
+    padding: 16px;
+}
+
+
+.detail-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.detail-row:last-child {
+    margin-bottom: 0;
+}
+
+.detail-label {
+    font-family: 'Aktiv Grotesk Extended', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #262626;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 2px;
+}
+
+.detail-value {
+    font-family: 'Aktiv Grotesk Extended', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #262626;
+}
+
+/* Progress Tracker */
+.progress-tracker {
+    margin: 16px;
+    padding: 20px;
+    background: #ffffff;
+    border: 1px solid #e3e3e3;
+    border-radius: 12px;
+}
+
+.tracker-title {
+    font-family: 'Aktiv Grotesk Extended', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #262626;
+    margin: 0 0 16px 0;
+}
+
+.progress-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.progress-step:last-child {
+    padding-bottom: 0;
+}
+
+.progress-step:last-child .step-line {
+    display: none;
+}
+
+.step-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.step-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.step-img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.step-line {
+    position: absolute;
+    left: 15px;
+    top: 32px;
+    width: 2px;
+    height: calc(100% - 12px);
+    background: #e3e3e3;
+}
+
+.progress-step.completed .step-line {
+    background: #22c55e;
+}
+
+.step-label {
+    font-family: 'Aktiv Grotesk Extended', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #262626;
+    padding-top: 6px;
+}
+
+.step-label strong {
+    font-weight: 700;
+}
+
+/* Footer */
+.confirmation-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    z-index: 10;
+}
+
+.confirmation-actions {
+    display: flex;
+    gap: 8px;
+    padding: 8px 16px;
+}
+
+.btn-secondary {
+    flex: 1;
+    padding: 14px 16px;
+    background: #ffffff;
+    color: #262626;
+    border: 1px solid #262626;
+    border-radius: 100px;
+    font-family: 'Aktiv Grotesk Extended', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+    background: #f5f5f5;
+}
+
+.btn-primary {
+    flex: 1;
+    padding: 14px 16px;
+    background: #262626;
+    color: #ffffff;
+    border: none;
+    border-radius: 100px;
+    font-family: 'Aktiv Grotesk Extended', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.confirmation-footer .home-indicator {
+    width: 134px;
+    height: 5px;
+    background: #262626;
+    border-radius: 100px;
+    margin: 8px auto;
+    opacity: 0.2;
+}
+
+/* Balloon Animations - appear with product, then fly out */
+.balloon {
+    opacity: 0;
+    animation: balloonAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+               balloonFloat 4s ease-in-out 3,
+               balloonFlyOut 1s ease-in forwards;
+}
+
+.red-balloon-1 {
+    animation-delay: 0.1s, 0.7s, 4.6s;
+    --rotate: -15deg;
+    --flyX: -100px;
+}
+
+.red-balloon-2 {
+    animation-delay: 0.3s, 0.9s, 4.8s;
+    --rotate: 10deg;
+    --flyX: -150px;
+}
+
+.depop-balloon {
+    animation-delay: 0.25s, 0.85s, 5s;
+    --rotate: 0deg;
+    --flyX: -80px;
+}
+
+.star-balloon {
+    animation-delay: 0.15s, 0.75s, 4.5s;
+    --rotate: 0deg;
+    --flyX: 50px;
+}
+
+.red-balloon-3 {
+    animation-delay: 0.2s, 0.8s, 4.7s;
+    --rotate: 15deg;
+    --flyX: 120px;
+}
+
+@keyframes balloonAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(60px) scale(0.3) rotate(var(--rotate, 0deg));
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1.1) rotate(var(--rotate, 0deg));
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(var(--rotate, 0deg));
+    }
+}
+
+@keyframes balloonFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(var(--rotate, 0deg));
+    }
+    25% {
+        transform: translateY(-15px) rotate(calc(var(--rotate, 0deg) + 8deg));
+    }
+    50% {
+        transform: translateY(-5px) rotate(calc(var(--rotate, 0deg) - 5deg));
+    }
+    75% {
+        transform: translateY(-18px) rotate(calc(var(--rotate, 0deg) + 3deg));
+    }
+}
+
+@keyframes balloonFlyOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0) translateX(0) rotate(var(--rotate, 0deg));
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-700px) translateX(var(--flyX, 0px)) rotate(calc(var(--rotate, 0deg) + 20deg));
+    }
+}
