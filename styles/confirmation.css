@@ -343,6 +343,20 @@
     color: #262626;
 }
 
+.detail-value.detail-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.detail-icon {
+    width: 32px;
+    height: 24px;
+    border-radius: 3px;
+    object-fit: contain;
+    border: 0.75px solid #acacac;
+}
+
 /* Progress Tracker */
 .progress-tracker {
     margin: 16px;
